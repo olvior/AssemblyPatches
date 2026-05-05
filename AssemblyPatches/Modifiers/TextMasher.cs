@@ -19,7 +19,7 @@ public class DialogueBox : global::DialogueBox
     private bool IsActive()
     {
         HeroActions actions = GameManager.instance.inputHandler.inputActions;
-        return Patches.GameManagerPatch.instance.Config.TextMasher
+        return Patches.GameManagerPatch.Config.TextMasher
             && !hidden
             && (actions.attack.IsPressed
                     || actions.jump.IsPressed

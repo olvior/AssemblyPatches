@@ -8,13 +8,14 @@ using UnityEngine;
 
 namespace Patches;
 
+
 [MonoModPatch("global::GameManager")]
 public class GameManagerPatch : global::GameManager
 {
     [MonoModIgnore]
     public static GameManagerPatch instance { get; }
 
-    public Configuration Config = new();
+    public static Configuration Config = new Configuration();
 
     private void OnGUI()
     {

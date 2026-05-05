@@ -1,5 +1,4 @@
-﻿#if LP
-using UnityEngine;
+﻿using UnityEngine;
 using MonoMod;
 using System.Collections;
 
@@ -15,9 +14,8 @@ public class OpeningSequence : global::OpeningSequence
 
     protected IEnumerator Start()
     {
-        if (Patches.GameManagerPatch.instance.Config.FasterIntroSkip)
+        if (Patches.GameManagerPatch.Config.FasterIntroSkip)
             skipChargeDuration = -1;
         return orig_Start();
     }
 }
-#endif
