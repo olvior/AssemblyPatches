@@ -9,6 +9,7 @@ public class DialogueBox : global::DialogueBox
     private PlayMakerFSM proxyFSM;
 
     private bool hidden;
+    private bool typing;
     private float revealSpeed;
     private float normalRevealSpeed;
 
@@ -30,7 +31,7 @@ public class DialogueBox : global::DialogueBox
     {
         if (IsActive())
         {
-            if (revealSpeed != 146)
+            if (revealSpeed != 146 && typing)
             {
                 StopTypewriter();
                 revealSpeed = 146;
@@ -38,10 +39,12 @@ public class DialogueBox : global::DialogueBox
                 StartCoroutine("TypewriteCurrentPage");
             }
         }
-        else
+        else if (revealSpeed != 65 && typing)
         {
+            StopTypewriter();
             revealSpeed = 65;
             normalRevealSpeed = revealSpeed;
+            StartCoroutine("TypewriteCurrentPage");
         }
     }
 
